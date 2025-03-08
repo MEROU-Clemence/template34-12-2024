@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="{{CurrentLang.IsoLang}}" culture="{{CurrentLang.CultureLang}}">
+<head>
+    <title>{{ResourcesTemplate.Contact}} - {{CustomTitle}} - {{City}} - {{Country}}</title>
+    <meta name="description" content="{{ResourcesTemplate.ContactDescription}}">
+    {{>CommonMetaTags}}
+    <link rel="canonical" href="{{UrlContact}}" />
+    <meta property="og:url" content="{{UrlContact}}" />
+    <meta property="og:title" content="{{ResourcesTemplate.Contact}}" />
+    <meta property="og:image" content="{{#Photos.0}}{{UrlMedias}}/crop-300x200/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}}" />
+    <meta property="og:description" content="{{ResourcesTemplate.ContactDescription}}" />
+    {{>FaviconTags}}
+    {{>CommonStylesheets}}
+</head>
+<body>
+    {{{ScriptAnalytics}}}
+    {{{GoogleTagManagerBody}}}
+    {{>Header}}
+
+    <main>
+        <!-- SECTION BANNER -->
+        <div class="section-title-BG bg-img" style="background-image: url(https://static.elloha.com/webgen/img/contact.jpg)" alt="{{NamePhoto}}">
+            <div class="opacity-white">
+
+                {{>Btn-infos-menu-2}}
+
+                <div class="title-banner-contain content-section">
+                    <h1 class="title-banner hidden-title-banner">{{ResourcesTemplate.Contact}}</h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION CONTACT -->
+        <section class="section section-contact alt-bg-color">
+            <div class="content-section">
+
+                <!-- SECTION FORMULAIRE -->
+                <form class="form-contact-big-contain" id="Contact-form" action="" method="GET">
+                    <div class="bloc-contact">
+
+                        <div class="section-title">
+                            <h2>{{ResourcesTemplate.Message}}</h2>
+                        </div>
+
+                        <div class="form-line">
+                            <div class="form-group">
+                                <label for="Email-firstname" class="title-color-1 d-none">{{ResourcesTemplate.FirstName}} *</label>
+                                <input id="Email-firstname" name="Email-firstname" type="text" placeholder="{{ResourcesTemplate.FirstNamePlaceholder}}" class="form-control" data-error="{{ResourcesTemplate.FirstNameError}}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Email-lastname" class="title-color-1 d-none control-label">{{ResourcesTemplate.LastName}} *</label>
+                                <input id="Email-lastname" name="Email-lastname" type="text" placeholder="{{ResourcesTemplate.LastNamePlaceholder}}" class="form-control" data-error="{{ResourcesTemplate.LastNameError}}" required>
+                            </div>
+                        </div>
+
+                        <div class="form-line">
+                            <div class="form-group">
+                                <label for="Email-email" class="title-color-1 d-none">{{ResourcesTemplate.Email}} *</label>
+                                <input id="Email-email" name="Email-email" type="email" placeholder="{{ResourcesTemplate.EmailPlaceholder}}" class="form-control" data-error="{{ResourcesTemplate.EmailError}}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Email-phone" class="title-color-1 d-none">{{ResourcesTemplate.Phone}} *</label>
+                                <input id="Email-phone" name="Email-phone" type="tel" placeholder="{{ResourcesTemplate.PhonePlaceholder}}" class="form-control" data-error="{{ResourcesTemplate.PhoneError}}" oninput="formatPhoneNumber(this)" required>
+                            </div>
+                        </div>
+
+                        <div clss="form-line">
+                            <div class="form-group form-group-textarea">
+                                <textarea id="Email-message" name="Email-message" rows="10" class="form-control" placeholder="{{ResourcesTemplate.MessagePlaceholder}}" data-error="{{ResourcesTemplate.MessageError}}" required></textarea>
+                            </div>
+                        </div>
+
+                        {{#HasNewsletterActivated}}
+                        <div class="form-line">
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label class="title-color-1">
+                                        <input id="Email-subscribe" type="checkbox" value="OUI">{{ResourcesTemplate.SubscribeToNewsletter}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-line">
+                            <div class="form-group form-group-2">
+                                <label class="title-color-1">
+                                    <text class="text-newsletter">{{ResourcesTemplate.SubscribeToNewsletterText}}</text>
+                                </label>
+                            </div>
+                        </div>
+                        {{/HasNewsletterActivated}}
+
+                        <div class="form-line">
+                            <div class="form-group form-group-2">
+                                <label class="title-color-1">
+                                    <text class="text-newsletter">{{ResourcesTemplate.ContactRGPDText}}</text>
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    {{>Captcha}}
+                </form>
+
+                <div class="coord-contacts-social-medias-big-contain">
+
+                    <div class="section-title">
+                        <h3>{{ResourcesTemplate.OurLocation}}</h3>
+                    </div>
+
+                    <div class="contacts-and-social-medias">
+                        <div class="address-and-contacts-in-contact">
+
+                            <div class="contact-w tel-hover contact-in-contact">
+                                <i class="las la-map-marker"></i>
+
+                                <div class="contact-accurate">
+                                    <span class="contact-name-in-accurate">{{ResourcesTemplate.Address}}</span>
+                                    <span>{{AddressLine}}, {{PostalCode}}, {{City}}, {{Country}}</span>
+                                </div>
+                            </div>
+
+                            {{#HasPhoneNumberActivated}}
+                            <a href="tel:{{PhoneNumber}}" class="contact-w tel-hover contact-in-contact">
+                                <i class="las la-phone"></i>
+
+                                <div class="contact-accurate">
+                                    <span class="contact-name-in-accurate">{{ResourcesTemplate.Phone}}</span>
+                                    <span>{{PhoneNumber}}</span>
+                                </div>
+                            </a>
+                            {{/HasPhoneNumberActivated}}
+
+                            {{#HasMobilePhoneNumberActivated}}
+                            <a href="tel:{{MobilePhoneNumber}}" class="contact-w tel-hover contact-in-contact">
+                                <i class="las la-mobile"></i>
+
+                                <div class="contact-accurate">
+                                    <span class="contact-name-in-accurate">{{ResourcesTemplate.MobilePhone}}</span>
+                                    <span>{{MobilePhoneNumber}}</span>
+                                </div>
+                            </a>
+                            {{/HasMobilePhoneNumberActivated}}
+
+                            {{#FaxNumber}}
+                            <div class="contact-w tel-hover contact-in-contact">
+                                <i class="las la-laptop-code"></i>
+
+                                <div class="contact-accurate">
+                                    <span class="contact-name-in-accurate">{{ResourcesTemplate.AbrFax}}</span>
+                                    <span>{{FaxNumber}}</span>
+                                </div>
+                            </div>
+                            {{/FaxNumber}}
+
+                            {{#HasWhatsappWidgetActivated}}
+                            <a href="tel:{{WhatsappUrl}}" class="contact-w tel-hover contact-in-contact">
+                                <i class="lab la-whatsapp"></i>
+
+                                <div class="contact-accurate">
+                                    <span class="contact-name-in-accurate">WhatsApp</span>
+                                </div>
+                            </a>
+                            {{/HasWhatsappWidgetActivated}}
+
+                            <div class="contact-w tel-hover contact-in-contact">
+                                <span class="arobase">@</span>
+
+                                <div class="contact-accurate">
+                                    <span class="contact-name-in-accurate">{{ResourcesTemplate.MailInfoLabelEmail}}</span>
+                                    <span>{{ResourcesTemplate.contactByEmail}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{#HasSocialNetworks}}
+                        <div class="social-links-widget">
+                            <div class="widget-content">
+                                <ul class="social-links">
+                                    {{#TikTok}}
+                                    <li><a href="{{TikTok}}" target="_blank"><span class="fab fa-tiktok"></span></a></li>
+                                    {{/TikTok}}
+                                    {{#Facebook}}
+                                    <li><a href="{{Facebook}}" target="_blank"><span class="lab la-facebook-f"></span></a></li>
+                                    {{/Facebook}}
+                                    {{#Twitter}}
+                                    <li><a href="{{Twitter}}" target="_blank"><span class="lab la-twitter"></span></a></li>
+                                    {{/Twitter}}
+                                    {{#Pinterest}}
+                                    <li><a href="{{Pinterest}}" target="_blank"><span class="lab la-pinterest"></span></a></li>
+                                    {{/Pinterest}}
+                                    {{#Youtube}}
+                                    <li><a href="{{Youtube}}" target="_blank"><span class="lab la-youtube"></span></a></li>
+                                    {{/Youtube}}
+                                    {{#Instagram}}
+                                    <li><a href="{{Instagram}}" target="_blank"><span class="lab la-instagram"></span></a></li>
+                                    {{/Instagram}}
+                                    {{#Vimeo}}
+                                    <li><a href="{{Vimeo}}" target="_blank"><span class="lab la-vimeo"></span></a></li>
+                                    {{/Vimeo}}
+                                    {{#Linkedin}}
+                                    <li><a href="{{Linkedin}}" target="_blank"><span class="lab la-linkedin-in"></span></a></li>
+                                    {{/Linkedin}}
+                                </ul>
+                            </div>
+                        </div>
+                        {{/HasSocialNetworks}}
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION MAP -->
+        <section class="section alt-bg-color">
+            <div class="content-section">
+
+                <div class="section-title">
+                    <h2>{{ResourcesTemplate.WhereFindUs}}</h2>
+                </div>
+
+                <div class="section-map section-map-in-contact">
+                    <div id="applemapkit" class="fullwidth-mapkit">
+                        <div id="mapApple"></div>
+                    </div>
+                    <div data-action="external-map" class="external-map">
+                        <div class="to-come">
+                            <i class="las la-map-marker"></i>{{ResourcesTemplate.ToCome}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    {{>Footer}}
+    {{>CommonScripts}}
+    
+</body>
+</html>

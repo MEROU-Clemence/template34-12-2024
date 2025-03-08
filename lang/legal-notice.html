@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="{{CurrentLang.IsoLang}}" culture="{{CurrentLang.CultureLang}}">
+<head>
+    <title>{{ResourcesTemplate.pageMenuTitle_legal-notice}} - {{CustomTitle}} - {{City}} - {{Country}}</title>
+    <meta name="description" content="{{ResourcesTemplate.LegalMentions}}">
+    {{>CommonMetaTags}}
+    <link rel="canonical" href="{{UrlLegalNotice}}" />
+    <meta property="og:url" content="{{UrlLegalNotice}}" />
+    <meta property="og:title" content="{{ResourcesTemplate.LegalMentions}}" />
+    <meta property="og:image" content="{{#Photos.0}}{{UrlMedias}}/crop-300x200/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}}" />
+    <meta property="og:description" content="{{ResourcesTemplate.LegalMentions}}" />
+    {{>FaviconTags}}
+    {{>CommonStylesheets}}
+</head>
+<body>
+    {{{ScriptAnalytics}}}
+    {{{GoogleTagManagerBody}}}
+    {{>Header}}
+
+    <main>
+        <!-- SECTION BANNER -->
+        <div class="section-title-BG bg-img" style="background-image: url({{#Photos.0}}{{UrlMedias}}/crop-1600x400/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}}); ">
+            <div class="opacity-white">
+
+                {{>Btn-infos-menu-2}}
+
+                <div class="title-banner-contain content-section">
+                    <h1 class="title-banner hidden-title-banner">{{ResourcesTemplate.LegalMentions}}</h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION MENTIONS LEGALES -->
+        <section class="section">
+            <div class="content-section">
+                {{{MentionsLegales}}}
+            </div>
+        </section>
+    </main>
+
+    {{>Footer}}
+    {{>CommonScripts}}
+    
+</body>
+</html>

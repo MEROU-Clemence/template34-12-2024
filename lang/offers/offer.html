@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="{{CurrentLang.IsoLang}}" culture="{{CurrentLang.CultureLang}}">
+<head>
+    <title>{{^IsRestaurant}}{{CurrentPrestation.TitrePresta}}{{/IsRestaurant}}{{#IsRestaurant}}{{ResourcesTemplate.CarteMenus}}{{/IsRestaurant}} - {{CustomTitle}} - {{City}} - {{Country}}</title>
+    <meta name="description" content="{{CurrentPrestation.DescriptionPrestaLength150}}">
+    {{>CommonMetaTags}}
+    <link rel="canonical" href="{{UrlPrestaTemplate}}" />
+    <meta property="og:url" content="{{UrlPrestaTemplate}}" />
+    <meta property="og:title" content="{{^IsRestaurant}}{{CurrentPrestation.TitrePresta}}{{/IsRestaurant}}{{#IsRestaurant}}{{ResourcesTemplate.CarteMenus}}{{/IsRestaurant}}" />
+    <meta property="og:image" content="{{#CurrentPrestation.PhotosPresta.0}}{{UrlMedias}}/crop-300x200/{{IdMedia}}/{{FileNamePhoto}}{{/CurrentPrestation.PhotosPresta.0}}{{^CurrentPrestation.PhotosPresta.0}}{{#Photos.0}}{{UrlMedias}}/crop-300x200/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}}{{/CurrentPrestation.PhotosPresta.0}}" />
+    <meta property="og:description" content="{{CurrentPrestation.DescriptionPrestaLength150}}" />
+    {{>FaviconTags}}
+    {{>CommonStylesheets}}
+    {{#HasBookingActivated}}{{>ScriptCalendarClick}}{{/HasBookingActivated}}
+</head>
+<body>
+    {{{ScriptAnalytics}}}
+    {{{GoogleTagManagerBody}}}
+    {{>Header}}
+
+    <main>
+        <!-- SECTION BANNER -->
+        <section class="section-title-BG bg-img" style="background-image: url({{#CurrentPrestation.PhotosPresta.0}}{{UrlMedias}}/crop-1600x400/{{IdMedia}}/{{FileNamePhoto}}{{/CurrentPrestation.PhotosPresta.0}}{{^CurrentPrestation.PhotosPresta.0}}{{#Photos.0}}{{UrlMedias}}/crop-1600x400/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}}{{/CurrentPrestation.PhotosPresta.0}}); ); " alt="{{NamePhoto}}">
+            <div class="opacity-white">
+
+                {{>Btn-infos-menu-2}}
+
+                <div class="title-banner-contain title-banner-contain-in-detail content-section">
+                    <h1 class="title-banner hidden-title-banner">{{CurrentPrestation.TitrePresta}}</h1>
+
+                    {{#CurrentPrestation.MinPricePresta}}
+                    <div class="price-detail hidden-title-banner">
+                        <span class="price-begin">{{ResourcesTemplate.PriceFrom}}</span>
+                        <span class="presta-price"><strong>{{CurrentPrestation.MinPricePresta}}{{CurrencySymbol}}</strong></span>
+                    </div>
+                    {{/CurrentPrestation.MinPricePresta}}
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION PRESENTATION DETAIL -->
+        <section class="section section-presentation-detail alt-bg-color">
+            <div class="content-section">
+
+                <!-- SECTION SLIDER -->
+                {{#CurrentPrestation.PhotosPresta.0}}
+                <div class="section-slider-offer">
+                    <div class="owl-carousel owl-theme detail-slider_img">
+                        {{#CurrentPrestation.PhotosPresta}}
+                        <img class="bg-img" src="{{UrlMedias}}/crop-800x800/{{IdMedia}}/{{FileNamePhoto}}" alt="{{NamePhoto}}" itemprop="image">
+                        {{/CurrentPrestation.PhotosPresta}}
+                    </div>
+                </div>
+                {{/CurrentPrestation.PhotosPresta.0}}
+
+                <div class="descrip-and-more-detail">
+                    <!-- INFOS OFFER -->
+                    <div class="bloc-infos">
+                        <div class="bloc-infos-hours">
+                            {{#CurrentPrestation.CheckinTime}}
+                            <div class="m-b-10">
+                                <i class="las la-clock i-left"></i>
+
+                                <span>{{ResourcesTemplate.CheckinTime}} :</span>
+
+                                <strong>{{CurrentPrestation.CheckinTimeString}}</strong>
+                            </div>
+                            {{/CurrentPrestation.CheckinTime}}
+                            {{#CurrentPrestation.CheckoutTime}}
+                            <div class="m-b-10">
+                                <i class="las la-clock i-left"></i>
+
+                                <span>{{ResourcesTemplate.CheckoutTime}} :</span>
+
+                                <strong>{{CurrentPrestation.CheckoutTimeString}}</strong>
+                            </div>
+                            {{/CurrentPrestation.CheckoutTime}}
+                            {{#CurrentPrestation.MaxCapacityPresta}}
+                            <div class="m-b-10">
+                                <i class="las la-user-friends i-left"></i>
+
+                                <span>{{ResourcesTemplate.MaxCapacity}}</span>
+
+                                <strong>{{CurrentPrestation.MaxCapacityPresta}} {{ResourcesTemplate.CapacityPersons}}</strong>
+                            </div>
+                            {{/CurrentPrestation.MaxCapacityPresta}}
+                        </div>
+
+                        <div class="bloc-infos-rooms">
+                            {{#CurrentPrestation.NbSimpleBeds}}
+                            <div class="m-b-10">
+                                <i class="las la-bed i-left"></i>
+
+                                <span>{{ResourcesTemplate.SimpleBeds}}</span>
+
+                                <strong>{{CurrentPrestation.NbSimpleBeds}}</strong>
+                            </div>
+                            {{/CurrentPrestation.NbSimpleBeds}}
+                            {{#CurrentPrestation.NbDoubleBeds}}
+                            <div class="m-b-10">
+                                <i class="las la-bed i-left"></i>
+
+                                <span>{{ResourcesTemplate.DoubleBeds}}</span>
+
+                                <strong>{{CurrentPrestation.NbDoubleBeds}}</strong>
+                            </div>
+                            {{/CurrentPrestation.NbDoubleBeds}}
+                            {{#CurrentPrestation.NbKingBeds}}
+                            <div class="m-b-10">
+                                <i class="las la-bed i-left"></i>
+
+                                <span>{{ResourcesTemplate.KingBeds}}</span>
+
+                                <strong>{{CurrentPrestation.NbKingBeds}}</strong>
+                            </div>
+                            {{/CurrentPrestation.NbKingBeds}}
+                            {{#CurrentPrestation.NbQueenBeds}}
+                            <div class="m-b-10">
+                                <i class="las la-bed i-left"></i>
+
+                                <span>{{ResourcesTemplate.QueenBeds}}</span>
+
+                                <strong>{{CurrentPrestation.NbQueenBeds}}</strong>
+                            </div>
+                            {{/CurrentPrestation.NbQueenBeds}}
+                            {{#CurrentPrestation.NbBunkBeds}}
+                            <div class="m-b-10">
+                                <i class="las la-bed i-left"></i>
+
+                                <span>{{ResourcesTemplate.BunkBeds}}</span>
+
+                                <strong>{{CurrentPrestation.NbBunkBeds}}</strong>
+                            </div>
+                            {{/CurrentPrestation.NbBunkBeds}}
+                            {{#CurrentPrestation.NbSofaBeds}}
+                            <div class="m-b-10">
+                                <i class="las la-bed i-left"></i>
+
+                                <span>{{ResourcesTemplate.SofaBeds}}</span>
+
+                                <strong>{{CurrentPrestation.NbSofaBeds}}</strong>
+                            </div>
+                            {{/CurrentPrestation.NbSofaBeds}}
+                            {{#CurrentPrestation.NbSofaDoubleBeds}}
+                            <div class="m-b-10">
+                                <i class="las la-bed i-left"></i>
+
+                                <span>{{ResourcesTemplate.SofaDoubleBeds}}</span>
+
+                                <strong>{{CurrentPrestation.NbSofaDoubleBeds}}</strong>
+                            </div>
+                            {{/CurrentPrestation.NbSofaDoubleBeds}}
+                            {{#CurrentPrestation.NbMurphyBeds}}
+                            <div class="m-b-10">
+                                <i class="las la-bed i-left"></i>
+
+                                <span>{{ResourcesTemplate.MurphyBeds}}</span>
+
+                                <strong>{{CurrentPrestation.NbMurphyBeds}}</strong>
+                            </div>
+                            {{/CurrentPrestation.NbMurphyBeds}}
+                            {{#CurrentPrestation.HasExtraBeds}}
+                            <div class="m-b-10">
+                                <i class="las la-user-plus i-left"></i>
+
+                                <span>{{ResourcesTemplate.ExtraBeds}}</span>
+
+                                <strong>{{ResourcesTemplate.Yes}}</strong>
+                            </div>
+                            {{/CurrentPrestation.HasExtraBeds}}
+                            {{#CurrentPrestation.HasBabyBeds}}
+                            <div class="m-b-10">
+                                <i class="las la-baby-carriage i-left"></i>
+
+                                <span>{{ResourcesTemplate.BabyBeds}}</span>
+
+                                <strong>{{ResourcesTemplate.Yes}}</strong>
+                            </div>
+                            {{/CurrentPrestation.HasBabyBeds}}
+                        </div>
+                    </div>
+
+                    <div class="descrip-detail-contain">
+                        <div class="description description-offer">{{{CurrentPrestation.DescriptionPresta}}}</div>
+
+                        <div id="seeMore2" class="more-less-btn-contain more-less-btn-contain-pres-home">
+                            <a href="#" class="more-less-btn">{{ResourcesTemplate.SeeMore}}</a>
+                        </div>
+                        <div id="seeLess2" class="more-less-btn-contain more-less-btn-contain-pres-home">
+                            <a href="#" class="more-less-btn">{{ResourcesTemplate.SeeLess}}</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION SCEA -->
+        {{#CurrentPrestation.SCEAPresta.0}}
+        <section class="section section-scea alt-bg-color">
+            <div class="content-section">
+
+                <div class="title-and-pictos-scea">
+                    <div class="section-title">
+                        <h2 class="hidden-title">{{ResourcesTemplate.ServicesTitle}}</h2>
+                    </div>
+
+                    <div class="scea-pictos hidden-pictos">
+                        {{#CurrentPrestation.HasDisabledAccess}}
+                        <div class="scea-picto">
+                            <i class="fi fi-rr-wheelchair-move"></i>
+                        </div>
+                        {{/CurrentPrestation.HasDisabledAccess}}
+                        {{#CurrentPrestation.HasWifi}}
+                        <div class="scea-picto">
+                            <i class="fi fi-rr-wifi"></i>
+                        </div>
+                        {{/CurrentPrestation.HasWifi}}
+                        {{#CurrentPrestation.HasTV}}
+                        <div class="scea-picto">
+                            <i class="fi fi-rr-screen"></i>
+                        </div>
+                        {{/CurrentPrestation.HasTV}}
+                        {{#CurrentPrestation.HasAirConditioning}}
+                        <div class="scea-picto">
+                            <i class="fi fi-rr-snowflake"></i>
+                        </div>
+                        {{/CurrentPrestation.HasAirConditioning}}
+                        {{#CurrentPrestation.HasNonSmoking}}
+                        <div class="scea-picto">
+                            <i class="fi fi-rr-smoking-ban"></i>
+                        </div>
+                        {{/CurrentPrestation.HasNonSmoking}}
+                        {{#CurrentPrestation.HasBalcony}}
+                        <div class="scea-picto">
+                            <i class="fi fi-rr-umbrella-beach"></i>
+                        </div>
+                        {{/CurrentPrestation.HasBalcony}}
+                        {{#CurrentPrestation.HasBathtub}}
+                        <div class="scea-picto">
+                            <i class="fi fi-rr-bath"></i>
+                        </div>
+                        {{/CurrentPrestation.HasBathtub}}
+                    </div>
+                </div>
+
+                <div class="list-scea-and-btn">
+                    {{#CurrentPrestation.SCEAPresta}}
+                    <ul class="options-scea">
+                        <li>{{LibelleService}}</li>
+                    </ul>
+                    {{/CurrentPrestation.SCEAPresta}}
+
+                    <div id="seeMore1" class="more-less-btn-contain-2">
+                        <a href="#" class="more-less-btn">+ {{ResourcesTemplate.SeeMore}}</a>
+                    </div>
+                    <div id="seeLess1" class="more-less-btn-contain-2">
+                        <a href="#" class="more-less-btn">- {{ResourcesTemplate.SeeLess}}</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        {{/CurrentPrestation.SCEAPresta.0}}
+
+        <!-- SECTION RESA && CALENDAR -->
+        <section class="section section-resa-in-detail alt-bg-color">
+            <div class="content-section">
+
+                <div class="section-title">
+                    <h2 class="hidden-title">{{ResourcesTemplate.BookNow}}!</h2>
+                </div>
+
+                <div class="resa-and-cal-detail">
+                    {{#HasBookingActivated}}
+                    <div id="section-BE" class="content-section section-BE-home">
+                        <div class="check-availability content-section">
+                            <div class="rounded-box">
+                                {{>Widget-BE}}
+                                {{>Widget-BE-secure}}
+                            </div>
+                        </div>
+                    </div>
+                    {{/HasBookingActivated}}
+
+                    <div class="calendars calendars-2">
+                        <div class="avail-calendar-w">
+                            <div class="calendar-container">
+                                <div id="datepicker2"></div>
+                            </div>
+                        </div>
+                        <div class="calendar_status">
+                            <div>
+                                <div class="green-dispo">-</div>
+                                <span>{{ResourcesTemplate.Available}}</span>
+                            </div>
+                            <div>
+                                <div class="red-no-dispo">-</div>
+                                <span class="not-available">{{ResourcesTemplate.NotAvailable}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION OPTIONS -->
+        {{#HasOptions}}
+        <section class="section alt-bg-color">
+            <div class="content-section">
+
+                <div class="section-title">
+                    <h2 class="hidden-title">{{ResourcesTemplate.Options}}</h2>
+                </div>
+
+                <div class="owl-carousel owl-theme slider-options">
+                    {{#Options}}
+                    <div class="presta-contain bg-img presta-contain-options" style="background-image: url({{#PhotosPresta.0}}{{UrlMedias}}/crop-600x300/{{IdMedia}}/{{FileNamePhoto}}{{/PhotosPresta.0}}); " draggable="false">
+                        <div class="opacity-3">
+
+                            <div class="infos">
+                                <h3><a href="{{{UrlBECustom}}}/Search/Index/{{IdPubBe}}?idoi={{IdOi}}&searchFirstAvailableDates=1&culture={{CurrentLang.CultureLang}}&forcedTemplate={{UrlTemplateBE}}" itemprop="url">{{TitrePresta}}</a></h3>
+
+                                <div class="description-options">{{{DescriptionPresta}}}</div>
+
+                                <div class="saw-prices-and-btn-resa">
+                                    {{#MinPricePresta}}
+                                    <div class="saw-prices">
+                                        <span class="price-begin">{{ResourcesTemplate.PriceFrom}}</span>
+                                        <span class="price">{{MinPricePresta}}{{CurrencySymbol}}</span>
+                                    </div>
+                                    {{/MinPricePresta}}
+
+                                    {{#HasBookingActivated}}
+                                    <div class="btn-options-contain">
+                                        <a href="{{{UrlBECustom}}}/Search/Index/{{IdPubBe}}?idoi={{IdOi}}&searchFirstAvailableDates=1&culture={{CurrentLang.CultureLang}}&forcedTemplate={{UrlTemplateBE}}" class="btn btn-options">
+                                            <span>{{ResourcesTemplate.pageMenuTitle_online-reservation}}</span>
+                                        </a>
+                                    </div>
+                                    {{/HasBookingActivated}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/Options}}
+                </div>
+
+            </div>
+        </section>
+        {{/HasOptions}}
+
+        <!-- SECTION OTHER OFFERS -->
+        {{#CurrentPrestation.HasOtherPrestations}}
+        <section class="section alt-bg-color">
+            <div class="content-section">
+
+                <div class="section-title">
+                    <h2 class="hidden-title">{{ResourcesTemplate.Offers_OurOtherOffers_2}}</h2>
+                </div>
+
+                <div class="owl-carousel owl-theme slider-other-offers">
+                    {{#CurrentPrestation.OtherPrestations}}
+                    <div class="presta-contain bg-img" style="background-image: url({{#PhotosPresta.0}}{{UrlMedias}}/crop-600x400/{{IdMedia}}/{{FileNamePhoto}}{{/PhotosPresta.0}}); " draggable="false">
+                        <div class="opacity-3">
+                            <div class="infos">
+                                <div class="title-and-capacity">
+                                    <h3><a href="{{UrlPrestaTemplate}}" itemprop="url">{{TitrePresta}}</a></h3>
+
+                                    {{#MaxCapacityPresta}}
+                                    <div class="capacity">
+                                        <i class="fi fi-rr-users-alt"></i>
+                                        <span>{{ResourcesTemplate.MaxCapacity}}{{MaxCapacityPresta}}</span>
+                                    </div>
+                                    {{/MaxCapacityPresta}}
+                                </div>
+
+                                <div class="description-presta-offers">{{{DescriptionPrestaLength150}}}</div>
+
+                                {{#MinPricePresta}}
+                                <div class="price-presta">
+                                    <span class="price-begin">{{ResourcesTemplate.PriceFrom}}</span>
+                                    <span class="presta-price"><strong>{{MinPricePresta}}{{CurrencySymbol}}/{{ResourcesTemplate.Night}}</strong></span>
+                                </div>
+                                {{/MinPricePresta}}
+                            </div>
+                        </div>
+                    </div>
+                    {{/CurrentPrestation.OtherPrestations}}
+                </div>
+
+            </div>
+        </section>
+        {{/CurrentPrestation.HasOtherPrestations}}
+
+    </main>
+
+    {{>Footer}}
+    {{>CommonScripts}}
+    
+</body>
+</html>

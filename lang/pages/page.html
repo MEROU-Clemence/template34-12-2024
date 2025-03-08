@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="{{CurrentLang.IsoLang}}" culture="{{CurrentLang.CultureLang}}">
+<head>
+    <title>{{CurrentPage.TitlePage}} - {{CustomTitle}} - {{City}} - {{Country}}</title>
+    <meta name="description" content="{{CurrentPage.TextPageWithoutHtmlLength150}}">
+    {{>CommonMetaTags}}
+    <link rel="canonical" href="{{UrlPageTemplate}}" />
+    <meta property="og:url" content="{{UrlPageTemplate}}" />
+    <meta property="og:title" content="{{CurrentPage.TitlePage}}" />
+    <meta property="og:image" content="{{#CurrentPage.PhotosPage.0}}{{UrlMedias}}/crop-300x200/{{IdMedia}}/{{FileNamePhoto}}{{/CurrentPage.PhotosPage.0}}{{^CurrentPage.PhotosPage.0}}{{#Photos.0}}{{UrlMedias}}/crop-300x200/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}}{{/CurrentPage.PhotosPage.0}}" />
+    <meta property="og:description" content="{{CurrentPage.TextPageLength150}}" />
+    {{>FaviconTags}}
+    {{>CommonStylesheets}}
+</head>
+<body>
+    {{{ScriptAnalytics}}}
+    {{{GoogleTagManagerBody}}}
+    {{>Header}}
+
+    <main>
+        <!-- SECTION BANNER -->
+        <div class="section-title-BG bg-img" style="background-image: url({{#CurrentPage.PhotosPage.0}}{{UrlMedias}}/crop-1600x400/{{IdMedia}}/{{FileNamePhoto}}{{/CurrentPage.PhotosPage.0}}{{^CurrentPage.PhotosPage.0}}{{#Photos.0}}{{UrlMedias}}/crop-1600x400/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}}{{/CurrentPage.PhotosPage.0}});" alt="{{NamePhoto}}">
+            <div class="opacity-white">
+
+                {{>Btn-infos-menu-2}}
+
+                <div class="title-banner-contain content-section">
+                    <h1 class="title-banner hidden-title-banner">{{CurrentPage.TitlePage}}</h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION OTHERS PAGES -->
+        <div class="section-others-pages">
+            <div class="content-section">
+
+                <div class="others-pages">
+                    <div class="photo-counter">
+                        <span class="current-photo-pages">1</span>/<span class="total-photos-pages"></span>
+                    </div>
+
+                    <div class="owl-carousel owl-theme slider-others-pages">
+                        {{#Pages}}
+                        <a class="other-page-item-complet" href="{{UrlPageTemplate}}">
+                            <div class="post-thumb-contain">
+                                <img class="post-thumb background-img bg-img" src="{{#PhotosPage.0}}{{UrlMedias}}/crop-150x150/{{IdMedia}}/{{FileNamePhoto}}{{/PhotosPage.0}}{{^PhotosPage.0}}{{#Photos.0}}{{UrlMedias}}/crop-150x150/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}}{{/PhotosPage.0}}" alt="{{NamePhoto}}">
+                            </div>
+
+                            <h4>{{TitlePage}}</h4>
+                        </a>
+                        {{/Pages}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- SECTION PAGES -->
+        <section class="section section-page">
+            <div class="content-section">
+
+                <div class="description-page">{{{CurrentPage.TextPage}}}</div>
+
+                {{#CurrentPage.PhotosPage.1}}
+                <div class="owl-wrapper">
+                    <div class="owl-carousel owl-theme slider-page">
+                        {{#CurrentPage.PhotosPage}}
+                        <div class="photo-page">
+                            <img src="{{UrlMedias}}/crop-1300x600/{{IdMedia}}/{{FileNamePhoto}}" alt="{{NamePhoto}}">
+                        </div>
+                        {{/CurrentPage.PhotosPage}}
+                    </div>
+                </div>
+                {{/CurrentPage.PhotosPage.1}}
+                {{^CurrentPage.PhotosPage.1}}
+                {{#CurrentPage.PhotosPage}}
+                <div class="photo-page">
+                    <img src="{{UrlMedias}}/crop-1300x600/{{IdMedia}}/{{FileNamePhoto}}" alt="{{NamePhoto}}">
+                </div>
+                {{/CurrentPage.PhotosPage}}
+                {{/CurrentPage.PhotosPage.1}}
+
+            </div>
+        </section>
+
+        <!-- SECTION NEWSLETTER -->
+        {{#HasNewsletterActivated}}
+        {{>Newsletter}}
+        {{/HasNewsletterActivated}}
+
+    </main>
+
+    {{>Footer}}
+    {{>CommonScripts}}
+    
+</body>
+</html>

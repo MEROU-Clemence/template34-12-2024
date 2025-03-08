@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="{{CurrentLang.IsoLang}}" culture="{{CurrentLang.CultureLang}}">
+<head>
+    <title>{{ResourcesTemplate.Around}} - {{CustomTitle}} - {{City}} - {{Country}}</title>
+    <meta name="description" content="{{SubtitleAround}}">
+    {{>CommonMetaTags}}
+    <link rel="canonical" href="{{UrlAround}}" />
+    <meta property="og:url" content="{{UrlAround}}" />
+    <meta property="og:title" content="{{ResourcesTemplate.Around}}" />
+    <meta property="og:image" content="{{#Photos.0}}{{UrlMedias}}/crop-300x200/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}}" />
+    <meta property="og:description" content="{{SubtitleAround}}" />
+    {{>FaviconTags}}
+    {{>CommonStylesheets}}
+</head>
+<body>
+    {{{ScriptAnalytics}}}
+    {{{GoogleTagManagerBody}}}
+    {{>Header}}
+
+    <main>
+        <!-- SECTION BANNER -->
+        <div class="section-title-BG bg-img" style="background-image: url(https://static.elloha.com/webgen/img/around.jpg)" alt="{{NamePhoto}}">
+            <div class="opacity-white">
+
+                {{>Btn-infos-menu-2}}
+
+                <div class="title-banner-contain content-section">
+                    <h1 class="title-banner hidden-title-banner">{{ResourcesTemplate.pageMenuTitle_around}}</h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION AROUND -->
+        <div class="section section-around">
+            <div class="content-section around-items-w">
+                {{#OisAssocied}}
+                <div class="grid-item" data-id-type="{{IdTypeOiAssocied}}" data-type-label="{{TypeOiAssocied}}" data-lat="{{XOiAssocied}}" data-lng="{{YOiAssocied}}">
+                    <div class="around-item-w">
+                        <div>
+                            <div class="around-item-img-w bg-img" style="background-image: url({{#PhotoOiAssocied}}{{UrlMedias}}/crop-900x600/{{IdMedia}}/{{FileNamePhoto}}{{/PhotoOiAssocied}});" alt="{{NamePhoto}}">
+                                <div class="around-item-type-contain">
+                                    <div class="around-item-type">{{TypeOiAssocied}}</div>
+                                </div>
+
+                                {{#DistanceOiAssocied}}
+                                <div class="around-distance">
+                                    <i class="las la-map-marker"></i> {{ResourcesTemplate.At}} {{DistanceOiAssocied}} {{ResourcesTemplate.Km}} {{ResourcesTemplate.FromOurPlace}}
+                                </div>
+                                {{/DistanceOiAssocied}}
+                            </div>
+
+                            <div class="around-item-content-big">
+                                <div class="around-item-content-w">
+                                    <h3 class="around-title" data-name>{{TitleOiAssocied}}</h3>
+
+                                    <div class="description-around">{{DescriptionOiAssocied}}</div>
+
+                                    <div class="more-less-btn-contain more-less-btn-contain-pres-home seeMore3">
+                                        <a href="#" class="more-less-btn link-to-see see-all"><i class="las la-plus-circle"></i> {{ResourcesTemplate.SeeMore}}</a>
+                                    </div>
+                                    <div class="more-less-btn-contain more-less-btn-contain-pres-home seeLess3">
+                                        <a href="#" class="more-less-btn link-to-see see-menos hidden"><i class="las la-minus-circle"></i> {{ResourcesTemplate.SeeLess}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="comment-item-w">
+                            <div class="comment-item-w-top">
+                                {{#HasAvatar}}
+                                <img class="user-avatar" src="{{PhotoUserUrl}}" alt="{{#DisplayUserInfos}}{{NameUser}}{{/DisplayUserInfos}}">
+                                {{/HasAvatar}}
+
+                                <div class="comment-title">{{ResourcesTemplate.WhyWeRecommand}}</div>
+                            </div>
+                            <div class="icon-to-see icon-all"><i class="las la-plus-circle"></i></div>
+                            <div class="icon-to-see icon-menos hidden"><i class="las la-minus-circle"></i></div>
+                            <div class="text-opinion d-none">{{TextOpinion}}</div>
+                        </div>
+                    </div>
+                </div>
+                {{/OisAssocied}}
+            </div>
+        </div>
+
+        <!-- SECTION MAP -->
+        <div class="section section-map-in-around-big-contain">
+            <div class="content-section">
+
+                <div class="section-map section-map-in-around">
+                    <div id="applemapkit" class="fullwidth-mapkit" data-lat="{{X}}" data-lng="{{Y}}" data-string="{{CustomTitle}}, {{AddressLine}}, {{PostalCode}}, {{City}}, {{Country}}.">
+                        <div id="mapApple"></div>
+                    </div>
+                    <div data-action="external-map" class="external-map">
+                        <div class="to-come">
+                            <i class="las la-map-marker"></i>{{ResourcesTemplate.ToCome}}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    {{>Footer}}
+    {{>CommonScripts}}
+    
+</body>
+</html>

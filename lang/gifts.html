@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="{{CurrentLang.IsoLang}}" culture="{{CurrentLang.CultureLang}}">
+<head>
+    <title>{{ResourcesTemplate.pageMenuTitle_Gifts}} - {{CustomTitle}} - {{City}} - {{Country}}</title>
+    <meta name="description" content="{{ResourcesTemplate.GiftCard}}">
+    {{>CommonMetaTags}}
+    <link rel="canonical" href="{{UrlGifts}}" />
+    <meta property="og:url" content="{{UrlGifts}}" />
+    <meta property="og:title" content="{{ResourcesTemplate.pageMenuTitle_Gifts}}" />
+    <meta property="og:image" content="{{#Photos.0}}{{UrlMedias}}/crop-300x200/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}}" />
+    <meta property="og:description" content="{{ResourcesTemplate.GiftCard}}" />
+    {{>FaviconTags}}
+    {{>CommonStylesheets}}
+    {{#HasBookingActivated}}{{>ScriptCalendarClick}}{{/HasBookingActivated}}
+</head>
+<body>
+    {{{ScriptAnalytics}}}
+    {{{GoogleTagManagerBody}}}
+    {{>Header}}
+
+    <main>
+        <!-- SECTION BANNER -->
+        <div class="section-title-BG bg-img" style="background-image: url({{#CurrentPrestation.PhotosPresta.0}}{{UrlMedias}}/crop-1600x400/{{IdMedia}}/{{FileNamePhoto}}{{/CurrentPrestation.PhotosPresta.0}}{{^CurrentPrestation.PhotosPresta.0}}{{#Photos.0}}{{UrlMedias}}/crop-1600x400/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}}{{/CurrentPrestation.PhotosPresta.0}});">
+            <div class="opacity-white">
+
+                {{>Btn-infos-menu-2}}
+
+                <div class="title-banner-contain content-section">
+                    <h1 class="title-banner hidden-title-banner">{{ResourcesTemplate.GiftCoupons}}</h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION CHEQUES CADEAUX -->
+        {{#HasGiftVouchersActivated}}
+        <section class="section section-giftcards-in-gifts alt-bg-color">
+            <div class="content-section">
+
+                <div class="section-title">
+                    <h2 class="hidden-title">{{ResourcesTemplate.VoucherOffer}}</h2>
+                </div>
+
+                <div class="prices-and-vouchers-slider">
+                    <div class="all-prices-vouchers">
+                        {{#GiftVouchers}}
+                        <a id="#voucher-{{Id}}" href="#voucher-{{Id}}" class="voucher-link">{{AmountGiftVoucher}} {{CurrencySymbol}}</a>
+                        {{/GiftVouchers}}
+                    </div>
+
+                    <div class="owl-carousel owl-theme vouchers-slider presta-big-contain">
+                        {{#GiftVouchers}}
+                        <div id="voucher-{{Id}}" class="presta-contain bg-img presta-contain-giftcard voucher-contain" style="background-image: url({{#PhotoGiftVoucher}}{{UrlMedias}}/crop-600x400/{{IdMedia}}/{{FileNamePhoto}}{{/PhotoGiftVoucher}}{{^PhotoGiftVoucher}}https://static.elloha.com/webgen/img/giftcard.jpg{{/PhotoGiftVoucher}}); " draggable="false">
+                            <div class="opacity-4">
+                                <div class="title-and-value-giftcard">
+                                    <h3>{{TitleGiftVoucher}}</h3>
+
+                                    <div class="value-giftcard">
+                                        <span class="price">{{AmountGiftVoucher}}{{CurrencySymbol}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="infos infos-giftcards">
+                                    <div class="description-options">{{DescriptionGiftVoucher}}</div>
+
+                                    <div class="date-giftcard-and-buy">
+                                        <div class="date-from-gift">
+                                            {{#DurationGiftVoucher}}
+                                            <div class="group-date-os">
+                                                <span class="date-os">{{ResourcesTemplate.Valid}}</span>
+                                                <span class="date-os">{{DurationGiftVoucher}} {{ResourcesTemplate.month}}</span>
+                                            </div>
+                                            {{/DurationGiftVoucher}}
+
+                                            {{^DurationGiftVoucher}}
+
+                                            {{#DateFromGiftVoucherString}}
+                                            <div class="group-date-os">
+                                                <span class="date-os">{{ResourcesTemplate.Valid}}</span>
+                                                <span class="date-os lowercase">{{ResourcesTemplate.DateFrom}}</span>
+                                                <span class="date-os">{{DateFromGiftVoucherString}}</span>
+                                                <span class="date-os">{{ResourcesTemplate.DateTo}}</span>
+                                            </div>
+                                            {{/DateFromGiftVoucherString}}
+
+                                            {{^DateFromGiftVoucherString}}
+                                            <div class="group-date-os">
+                                                {{#DateToGiftVoucherString}}
+                                                <span class="date-os">{{ResourcesTemplate.Valid}}</span>
+                                                <span class="date-os lowercase">{{ResourcesTemplate.DateUntil}}</span>
+                                                {{/DateToGiftVoucherString}}
+
+                                                {{#DateToGiftVoucherString}}
+                                                <span class="date-os">{{DateToGiftVoucherString}}</span>
+                                                {{/DateToGiftVoucherString}}
+                                            </div>
+                                            {{/DateFromGiftVoucherString}}
+
+                                            {{/DurationGiftVoucher}}
+                                        </div>
+
+                                        {{#HasBookingActivated}}
+                                        <div class="btn-options-contain">
+                                            <a href="{{{UrlBECustom}}}/Search/Index/{{IdPubBe}}?idoi={{IdOi}}&searchFirstAvailableDates=1&culture={{CurrentLang.CultureLang}}&forcedTemplate={{UrlTemplateBE}}" class="btn btn-options btn-giftcards">
+                                                <span>{{ResourcesTemplate.Buy}}</span>
+                                            </a>
+                                        </div>
+                                        {{/HasBookingActivated}}
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        {{/GiftVouchers}}
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        {{/HasGiftVouchersActivated}}
+
+        <!-- SECTION CARTES CADEAUX -->
+        {{#HasGiftCardsActivated}}
+        <section class="section section-giftcards-in-gifts alt-bg-color">
+            <div class="content-section">
+
+                <div class="section-title">
+                    <h2 class="hidden-title">{{ResourcesTemplate.GiftCardOffer}}</h2>
+                </div>
+
+                <div class="presta-big-contain">
+                    {{#GiftCards}}
+                    <div class="presta-contain bg-img presta-contain-giftcard" style="background-image: url({{#PhotoGiftCard}}{{UrlMedias}}/crop-600x400/{{IdMedia}}/{{FileNamePhoto}}{{/PhotoGiftCard}}{{^PhotoGiftCard}}https://static.elloha.com/webgen/img/giftcard.jpg{{/PhotoGiftCard}});" draggable="false">
+                        <div class="opacity-4">
+                            <div class="title-and-value-giftcard">
+                                <h3>{{TitleGiftCard}}</h3>
+
+                                <div class="value-giftcard">
+                                    <span class="price">{{AmountGiftCard}}{{CurrencySymbol}}</span>
+                                </div>
+                            </div>
+
+                            <div class="infos infos-giftcards">
+                                <div class="description-options">{{DescriptionGiftCard}}</div>
+
+                                <div class="date-giftcard-and-buy">
+                                    <div class="date-from-gift">
+                                        {{#DurationGiftCard}}
+                                        <div class="group-date-os">
+                                            <span class="date-os">{{ResourcesTemplate.Valid}}</span>
+                                            <span class="date-os">{{DurationGiftCard}} {{ResourcesTemplate.month}}</span>
+                                        </div>
+                                        {{/DurationGiftCard}}
+
+                                        {{^DurationGiftCard}}
+
+                                        {{#DateFromGiftCardString}}
+                                        <div class="group-date-os">
+                                            <span class="date-os">{{ResourcesTemplate.Valid}}</span>
+                                            <span class="date-os lowercase">{{ResourcesTemplate.DateFrom}}</span>
+                                            <span class="date-os">{{DateFromGiftCardString}}</span>
+                                            <span class="date-os">{{ResourcesTemplate.DateTo}}</span>
+                                        </div>
+                                        {{/DateFromGiftCardString}}
+
+                                        {{^DateFromGiftCardString}}
+                                        <div class="group-date-os">
+                                            {{#DateToGiftCardString}}
+                                            <span class="date-os">{{ResourcesTemplate.Valid}}</span>
+                                            <span class="date-os lowercase">{{ResourcesTemplate.DateUntil}}</span>
+                                            {{/DateToGiftCardString}}
+
+                                            {{#DateToGiftCardString}}
+                                            <span class="date-os">{{DateToGiftCardString}}</span>
+                                            {{/DateToGiftCardString}}
+                                        </div>
+                                        {{/DateFromGiftCardString}}
+
+                                        {{/DurationGiftCard}}
+                                    </div>
+
+                                    {{#HasBookingActivated}}
+                                    <div class="btn-options-contain">
+                                        <a href="{{{UrlBECustom}}}/Search/Index/{{IdPubBe}}?idoi={{IdOi}}&searchFirstAvailableDates=1&culture={{CurrentLang.CultureLang}}&forcedTemplate={{UrlTemplateBE}}" class="btn btn-options btn-giftcards">
+                                            <span>{{ResourcesTemplate.Buy}}</span>
+                                        </a>
+                                    </div>
+                                    {{/HasBookingActivated}}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    {{/GiftCards}}
+                </div>
+
+            </div>
+        </section>
+        {{/HasGiftCardsActivated}}
+
+        <!-- SECTION CALENDAR -->
+        {{#HasCalendarActivated}}
+        {{>Calendar}}
+        {{/HasCalendarActivated}}
+
+    </main>
+
+    {{>Footer}}
+    {{>CommonScripts}}
+    
+</body>
+</html>

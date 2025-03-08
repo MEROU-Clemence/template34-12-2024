@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="{{CurrentLang.IsoLang}}" culture="{{CurrentLang.CultureLang}}">
+<head>
+    <title>{{ResourcesTemplate.Offers_MenuTitle}} - {{CustomTitle}} - {{City}} - {{Country}}</title>
+    <meta name="description" content="{{CustomTitle}} - {{ResourcesTemplate.Offers_OurOffers}}">
+    {{>CommonMetaTags}}
+    <link rel="canonical" href="{{UrlOffers}}" />
+    <meta property="og:url" content="{{UrlOffers}}" />
+    <meta property="og:title" content="{{ResourcesTemplate.Offers_MenuTitle}}" />
+    <meta property="og:image" content="{{#Photos.0}}{{UrlMedias}}/crop-300x200/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}}" />
+    <meta property="og:description" content="{{CustomTitle}} - {{ResourcesTemplate.Offers_OurOffers}}" />
+    {{>FaviconTags}}
+    {{>CommonStylesheets}}
+</head>
+<body>
+    {{{ScriptAnalytics}}}
+    {{{GoogleTagManagerBody}}}
+    {{>Header}}
+
+    <main>
+        <!-- SECTION BANNER -->
+        <div class="section-title-BG bg-img" style="background-image: url({{#CurrentPage.PhotosPage.0}}{{UrlMedias}}/crop-1600x400/{{IdMedia}}/{{FileNamePhoto}}{{/CurrentPage.PhotosPage.0}}{{^CurrentPage.PhotosPage.0}}{{#Photos.0}}{{UrlMedias}}/crop-1600x400/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}}{{/CurrentPage.PhotosPage.0}});">
+            <div class="opacity-white">
+
+                {{>Btn-infos-menu-2}}
+
+                <div class="title-banner-contain content-section">
+                    <h1 class="title-banner hidden-title-banner">{{ResourcesTemplate.Offers_MenuTitle_2}}</h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION OFFRES -->
+        <section class="section section-offers-in-offers alt-bg-color">
+            <div class="content-section">
+
+                <div class="presta-big-contain">
+                    {{#Prestations}}
+                    <div class="presta-contain bg-img presta-contain-in-offers" style="background-image: url({{#PhotosPresta.0}}{{UrlMedias}}/crop-1000x1000/{{IdMedia}}/{{FileNamePhoto}}{{/PhotosPresta.0}}); " draggable="false">
+                        <div class="opacity-3">
+                            <div class="infos">
+                                <div class="title-and-capacity">
+                                    <h3><a href="{{UrlPrestaTemplate}}" itemprop="url">{{TitrePresta}}</a></h3>
+
+                                    {{#MaxCapacityPresta}}
+                                    <div class="capacity">
+                                        <i class="fi fi-rr-users-alt"></i>
+                                        <span>{{ResourcesTemplate.MaxCapacity}}{{MaxCapacityPresta}}</span>
+                                    </div>
+                                    {{/MaxCapacityPresta}}
+                                </div>
+
+                                {{#DescriptionPresta}}
+                                <div class="description-presta-offers">{{{DescriptionPresta}}}</div>
+                                {{/DescriptionPresta}}
+
+                                {{#MinPricePresta}}
+                                <div class="price-presta">
+                                    <span class="price-begin">{{ResourcesTemplate.PriceFrom}}</span>
+                                    <span class="presta-price"><strong>{{MinPricePresta}}{{CurrencySymbol}}/{{ResourcesTemplate.Night}}</strong></span>
+                                </div>
+                                {{/MinPricePresta}}
+                            </div>
+                        </div>
+                    </div>
+                    {{/Prestations}}
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION CALENDAR -->
+        {{#HasCalendarActivated}}
+        {{>Calendar}}
+        {{/HasCalendarActivated}}
+
+        <!-- SECTION NEWSLETTER -->
+        {{#HasNewsletterActivated}}
+        {{>Newsletter}}
+        {{/HasNewsletterActivated}}
+
+    </main>
+
+    {{>Footer}}
+    {{>CommonScripts}}
+    
+</body>
+</html>
